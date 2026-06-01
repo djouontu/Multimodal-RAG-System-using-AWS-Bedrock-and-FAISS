@@ -10,11 +10,11 @@ This repository implements an end-to-end Multimodal Retrieval-Augmented Generati
                           │
            ┌──────────────┴──────────────┐
            ▼                             ▼
-   ┌─────────────────┐           ┌─────────────────┐
+  # ┌─────────────────┐           ┌─────────────────┐
    │  Text Contents  │            │ Visual Contents │
    └────────┬────────┘           └────────┬────────┘
-           │                             │
-           ▼                             ▼
+            │                             │
+            ▼                             ▼
 ┌─────────────────────┐       ┌─────────────────────┐
 │ Titan Text Embed V2 │       │ Claude 3.5 Sonnet   │
 │  (Dense Vectors)    │       │ (Visual Descriptors)│
