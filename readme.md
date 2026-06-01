@@ -1,4 +1,4 @@
-markdown_content = """# **Execution & Architecture Blueprint: Multimodal RAG Recommender System**
+# **Execution & Architecture Blueprint: Multimodal RAG Recommender System**
 
 This repository provides an end-to-end implementation for an LLM-powered **Multimodal Retrieval-Augmented Generation (RAG) Recommender System**. It integrates textual and visual data ingestion via Amazon S3, dense semantic vector indexing using FAISS, and real-time generative synthesis using Anthropic Claude 3.5 Sonnet and Amazon Titan via AWS Bedrock, all deployed on a lightweight Streamlit dashboard hosted on AWS EC2.
 
@@ -18,50 +18,50 @@ This repository provides an end-to-end implementation for an LLM-powered **Multi
 ## 1. System Architecture & Workflow
 
 The pipeline bridges the gap between text queries, visual catalogs, and generative recommendations through an advanced multimodal ingestion and semantic lookup sequence:
-       
-                 ┌──────────────────┐
-                 │ Raw Multi-Modal  │
-                 │  Data / Catalog  │
-                 └────────┬─────────┘
-                          │
-           ┌──────────────┴──────────────┐
-           ▼                             ▼
-  ┌─────────────────┐           ┌─────────────────┐
-  │  Text Contents  │           │ Visual Contents │
-  └────────┬────────┘           └────────┬────────┘
-           │                             │
-           ▼                             ▼
-┌─────────────────────┐       ┌─────────────────────┐
-│ Titan Text Embed V2 │       │ Claude 3.5 Sonnet   │
-│  (Dense Vectors)    │       │ (Visual Descriptors)│
-└──────────┬──────────┘       └──────────┬──────────┘
-           │                             │
-           └──────────────┬──────────────┘
-                          ▼
-               ┌────────────────────┐
-               │    FAISS Vector    │
-               │ Database / Storage │
-               └──────────┬─────────┘
-                          │
-┌───────────────┐         │  Semantic Top-K Match
-│  User Query   ├─────────┼──────────────┐
-└───────────────┘         ▼              ▼
-                ┌──────────────────┐  ┌──────────────────┐
-                │ Matched Text     │  │ Matched Image    │
-                │ Chunks           │  │ Metadata         │
-                └────────┬─────────┘  └────────┬─────────┘
-                         │                     │
-                         └──────────┬──────────┘
-                                    ▼
-                       ┌─────────────────────────┐
-                       │   Claude 3.5 Sonnet     │
-                       │  Generative Synthesis   │
-                       └────────────┬────────────
-                                    ▼
-                       ┌─────────────────────────┐
-                       │   Streamlit UI Output   │
-                       └─────────────────────────┘ 
-                   
+
+                        ┌──────────────────┐
+                        │ Raw Multi-Modal  │
+                        │  Data / Catalog  │
+                        └────────┬─────────┘
+                                 │
+                  ┌────────────────────────────┐
+                  ▼                            ▼
+              ┌─────────────────┐    ┌─────────────────┐
+              │  Text Contents  │    │ Visual Contents │
+              └────────┬────────┘    └────────┬────────┘
+                       │                      │
+                       ▼                      ▼
+            ┌─────────────────────┐   ┌─────────────────────┐
+            │ Titan Text Embed V2 │   │ Claude 3.5 Sonnet   │
+            │  (Dense Vectors)    │   │ (Visual Descriptors)│
+            └──────────┬──────────┘   └──────────┬──────────┘
+                       │                         │
+                       └──────────────┬──────────┘
+                                      ▼
+                            ┌────────────────────┐
+                            │    FAISS Vector    │
+                            │ Database / Storage │
+                            └──────────┬─────────┘
+                                       │
+             ┌───────────────┐         │  Semantic Top-K Match
+             │  User Query   ├─────────┼──────────────┐
+             └───────────────┘         ▼              ▼
+                          ┌──────────────────┐   ┌──────────────────┐
+                          │ Matched Text     │   │ Matched Image    │
+                          │ Chunks           │   │ Metadata         │
+                          └────────┬─────────┘   └────────┬─────────┘
+                                   │                      │
+                                   └──────────┬───────────┘
+                                              ▼
+                                  ┌─────────────────────────┐
+                                  │   Claude 3.5 Sonnet     │
+                                  │  Generative Synthesis   │
+                                  └────────────┬────────────┘
+                                               ▼
+                                 ┌─────────────────────────┐
+                                 │   Streamlit UI Output   │
+                                 └─────────────────────────┘
+            
 
 ### Pipeline Execution Phases
 * **Data Ingestion & Staging:** Structured data tables, raw documentation, and corresponding asset images are stored within an unified **Amazon S3** namespace.
