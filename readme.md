@@ -18,7 +18,8 @@ This repository provides an end-to-end implementation for an LLM-powered **Multi
 ## 1. System Architecture & Workflow
 
 The pipeline bridges the gap between text queries, visual catalogs, and generative recommendations through an advanced multimodal ingestion and semantic lookup sequence:
-  '''            ┌──────────────────┐
+  '''cmd         
+                 ┌──────────────────┐
                  │ Raw Multi-Modal  │
                  │  Data / Catalog  │
                  └────────┬─────────┘
@@ -134,7 +135,7 @@ This application workspace requires a base installation of **Python 3.10.4**. Fo
 ### Standard Workspace Provisioning
 
 #### Windows Environment (Command Prompt)
-```cmd
+'''cmd
 :: Move execution path to project folder root
 cd C:\\path\\to\\your\\project
 
