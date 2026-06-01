@@ -18,7 +18,7 @@ This repository provides an end-to-end implementation for an LLM-powered **Multi
 ## 1. System Architecture & Workflow
 
 The pipeline bridges the gap between text queries, visual catalogs, and generative recommendations through an advanced multimodal ingestion and semantic lookup sequence:
-  '''cmd         
+' ' ' cmd         
                  ┌──────────────────┐
                  │ Raw Multi-Modal  │
                  │  Data / Catalog  │
