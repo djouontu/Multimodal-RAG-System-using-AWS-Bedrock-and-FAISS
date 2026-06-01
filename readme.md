@@ -1,7 +1,7 @@
-## **Project overview**
+#  **Project overview**
 This repository implements an end-to-end Multimodal Retrieval-Augmented Generation (RAG) Recommender System. The architecture seamlessly bridges natural language queries with a multimodal catalog (containing both text and visual assets) using dense vector spaces and advanced Generative AI orchestration via AWS Bedrock.
 
- # **Core Architecture Workflow**
+ ## **Core Architecture Workflow**
  
                  ┌──────────────────┐
                  │ Raw Multi-Modal  │
@@ -10,9 +10,9 @@ This repository implements an end-to-end Multimodal Retrieval-Augmented Generati
                           │
            ┌──────────────┴──────────────┐
            ▼                             ▼
-  ┌─────────────────┐           ┌─────────────────┐
-  │  Text Contents  │           │ Visual Contents │
-  └────────┬────────┘           └────────┬────────┘
+   ┌─────────────────┐           ┌─────────────────┐
+   │  Text Contents  │            │ Visual Contents │
+   └────────┬────────┘           └────────┬────────┘
            │                             │
            ▼                             ▼
 ┌─────────────────────┐       ┌─────────────────────┐
